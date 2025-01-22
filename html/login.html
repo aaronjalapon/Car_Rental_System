@@ -20,8 +20,22 @@
             </div>
             <button type="submit" class="login-btn">Login</button>
         </form>
-        <p class="signup-link">Don't have an account? <a href="#">Sign up here</a></p>
+        <p class="forgot-password"><a href="#" id="forgotPasswordLink">Forgot Password?</a></p>
+        <p class="signup-link">Don't have an account? <a href="/html/signup.html">Sign up here</a></p>
     </div>
-    <script src="script.js"></script>
+    <div id="forgotPasswordModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Reset Your Password</h2>
+            <form id="resetPasswordForm">
+                <div class="form-group">
+                    <label for="resetEmail">Enter your email:</label>
+                    <input type="email" id="resetEmail" name="resetEmail" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="reset-btn">Send Reset Link</button>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
 </body>
 </html>
