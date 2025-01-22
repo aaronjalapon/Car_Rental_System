@@ -10,7 +10,6 @@ body {
     background-image: url(/Car_Rental_System/images/car_bg.jpg);
     background-repeat: no-repeat;
     background-position: center center;
-
 }
 
 .login-container {
@@ -41,7 +40,10 @@ label {
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"], 
+input[type="text"], 
+input[type="tel"],
+input[type="file"]{
     width: 100%;
     padding: 10px;
     border: 1px solid #cccccc;
@@ -173,7 +175,7 @@ input[type="password"] {
 .signup-btn {
     width: 100%;
     padding: 10px;
-    background-color: #28a745;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 4px;
@@ -183,7 +185,7 @@ input[type="password"] {
 }
 
 .signup-btn:hover {
-    background-color: #218838;
+    background-color: darkgray;
 }
 
 .login-link {
@@ -192,7 +194,7 @@ input[type="password"] {
 }
 
 .login-link a {
-    color: #007bff;
+    color: darkgray;
     text-decoration: none;
 }
 
