@@ -10,6 +10,7 @@ body {
     background-image: url(/images/car_bg.jpg);
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: cover;
 }
 
 .login-container {
@@ -115,7 +116,7 @@ input[type="file"]{
 }
 
 .modal-content {
-    background-image: linear-gradient(45deg, rgba(255,0,0,0.80), rgba(0,0,0,0.80));
+    background-image: linear-gradient(45deg, rgba(255,0,0,1), rgba(0,0,0,1));
     padding: 20px 30px;
     border-radius: 8px;
     width: 100%;
