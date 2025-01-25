@@ -1,4 +1,3 @@
-// Login Form Validation
 document.getElementById('loginForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -10,44 +9,30 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         return;
     }
 
-    // Example login validation
-    if (email === 'test@carrental.com' && password === 'password123') {
-        alert('Login successful!');
-        window.location.href = 'dashboard.html';
-    } else {
-        alert('Invalid email or password. Please try again.');
-    }
-});
+    // Prepare form data
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
 
-// Forgot Password Modal Functionality
-const forgotPasswordLink = document.getElementById('forgotPasswordLink');
-const forgotPasswordModal = document.getElementById('forgotPasswordModal');
-const closeModal = document.getElementById('closeModal');
-const resetPasswordForm = document.getElementById('resetPasswordForm');
-
-// Open Modal
-forgotPasswordLink.addEventListener('click', function (e) {
-    e.preventDefault();
-    forgotPasswordModal.classList.remove('hidden');
-});
-
-// Close Modal
-closeModal.addEventListener('click', function () {
-    forgotPasswordModal.classList.add('hidden');
-});
-
-// Handle Reset Password Form Submission
-resetPasswordForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const resetEmail = document.getElementById('resetEmail').value.trim();
-
-    if (!resetEmail) {
-        alert('Please enter your email.');
-        return;
-    }
-
-    // Simulate sending reset email
-    alert(`A reset link has been sent to ${resetEmail}.`);
-    forgotPasswordModal.classList.add('hidden');
+    // Send the form data via AJAX
+    fetch('../php/login.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'admin') {
+            alert(data.message);
+            window.location.href = 'testAdmin.html';  // Redirect to admin dashboard
+        } else if (data.status === 'user') {
+            alert(data.message);
+            window.location.href = 'test.html';  // Redirect to user dashboard
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
 });
