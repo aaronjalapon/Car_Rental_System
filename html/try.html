@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Car Rental Services</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e90ff;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .card h2 {
+            color: #1e90ff;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1c7ed6;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Admin Panel</div>
+        <nav>
+            <a href="#cars">Cars</a>
+            <a href="#customers">Customers</a>
+            <a href="#employees">Employees</a>
+            <a href="#reservations">Reservations</a>
+            <a href="#transactions">Transactions</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Welcome to the Admin Panel</h1>
+
+        <section id="cars" class="card">
+            <h2>Car Management</h2>
+            <button>Add New Car</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Car ID</th>
+                        <th>Brand</th>
+                        <th>Body Type</th>
+                        <th>Seat Capacity</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Toyota</td>
+                        <td>Sedan</td>
+                        <td>5</td>
+                        <td>$50/day</td>
+                        <td class="actions">
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="customers" class="card">
+            <h2>Customer Management</h2>
+            <button>Add New Customer</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Driver's License</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>John Doe</td>
+                        <td>john.doe@example.com</td>
+                        <td>123-456-7890</td>
+                        <td>Verified</td>
+                        <td class="actions">
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="employees" class="card">
+            <h2>Employee Management</h2>
+            <button>Add New Employee</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>201</td>
+                        <td>Jane Smith</td>
+                        <td>Manager</td>
+                        <td class="actions">
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="reservations" class="card">
+            <h2>Reservation Management</h2>
+            <button>Add New Reservation</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Reservation ID</th>
+                        <th>Customer</th>
+                        <th>Car</th>
+                        <th>Employee</th>
+                        <th>Rent Duration</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>301</td>
+                        <td>John Doe</td>
+                        <td>Toyota Sedan</td>
+                        <td>Jane Smith</td>
+                        <td>3 Days</td>
+                        <td class="actions">
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="transactions" class="card">
+            <h2>Transaction Management</h2>
+            <button>Add New Transaction</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Reservation ID</th>
+                        <th>Transaction Date</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>401</td>
+                        <td>301</td>
+                        <td>2025-01-28</td>
+                        <td>$150</td>
+                        <td class="actions">
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+</body>
+</html>
