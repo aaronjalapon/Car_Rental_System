@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     display: flex;
@@ -14,7 +14,7 @@ body {
 }
 
 .login-container {
-    background-image: linear-gradient(45deg, rgba(255,0,0,0.80), rgba(0,0,0,0.80));
+    background-image: linear-gradient(45deg, rgba(219,0,0,0.80), rgba(0,0,0,0.80));
     padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(255, 0, 0, 0.1);
