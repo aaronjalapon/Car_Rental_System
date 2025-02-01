@@ -36,3 +36,36 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         alert('An error occurred. Please try again.');
     });
 });
+
+// Forgot Password Modal Functionality
+const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+const forgotPasswordModal = document.getElementById('forgotPasswordModal');
+const closeModal = document.getElementById('closeModal');
+const resetPasswordForm = document.getElementById('resetPasswordForm');
+
+// Open Modal
+forgotPasswordLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    forgotPasswordModal.classList.remove('hidden');
+});
+
+// Close Modal
+closeModal.addEventListener('click', function () {
+    forgotPasswordModal.classList.add('hidden');
+});
+
+// Handle Reset Password Form Submission
+resetPasswordForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const resetEmail = document.getElementById('resetEmail').value.trim();
+
+    if (!resetEmail) {
+        alert('Please enter your email.');
+        return;
+    }
+
+    // Simulate sending reset email
+    alert(`A reset link has been sent to ${resetEmail}.`);
+    forgotPasswordModal.classList.add('hidden');
+});
