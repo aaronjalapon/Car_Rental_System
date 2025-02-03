@@ -51,11 +51,6 @@
                 </div>
                 <div class="filter-options">
                     <select>
-                        <option value="">Status</option>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                    </select>
-                    <select>
                         <option value="">Sort By</option>
                         <option value="name">Name</option>
                         <option value="id">ID</option>
@@ -74,7 +69,6 @@
                             <th>Email</th>
                             <th>Contact Number</th>
                             <th>Driver's License</th>
-                            <th>Status</th>
                             <th>Last Rental</th>
                             <th>Actions</th>
                         </tr>
@@ -87,7 +81,6 @@
                             <td>john.doe@example.com</td>
                             <td>123-456-7890</td>
                             <td><span class="badge verified"><i class="fas fa-check-circle"></i> Verified</span></td>
-                            <td><span class="badge active">Active</span></td>
                             <td>2023-11-15</td>
                             <td class="actions">
                                 <button class="btn-edit" title="Edit"><i class="fas fa-edit"></i></button>
@@ -122,32 +115,42 @@
     <!-- Modal for adding/editing customer -->
     <div id="customerModal" class="modal">
         <div class="modal-content">
-            <h3>Add New Customer</h3>
+            <span class="close">&times;</span>
+            <h2 class="modal-title">Add New Customer</h2>
             <form id="customerForm">
                 <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" required>
+                    <label for="custName">Full Name:</label>
+                    <input type="text" id="custName" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" required>
+                    <label for="custEmail">Email:</label>
+                    <input type="email" id="custEmail" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label>Contact Number</label>
-                    <input type="tel" required>
+                    <label for="custPhone">Contact Number:</label>
+                    <input type="tel" id="custPhone" name="phone" required>
                 </div>
                 <div class="form-group">
-                    <label>Driver's License</label>
-                    <input type="file">
+                    <label for="custLicense">Driver's License Number:</label>
+                    <input type="text" id="custLicense" name="license" required>
+                </div>
+                <div class="form-group">
+                    <label for="custLicenseFile">License Document:</label>
+                    <input type="file" id="custLicenseFile" name="licenseFile" accept="image/*,.pdf">
+                </div>
+                <div class="form-group">
+                    <label for="custAddress">Address:</label>
+                    <textarea id="custAddress" name="address" required></textarea>
                 </div>
                 <div class="form-actions">
                     <button type="button" class="btn-cancel">Cancel</button>
-                    <button type="submit" class="btn-save">Save</button>
+                    <button type="submit" class="btn-save">Save Customer</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script src="/js/admin-panel.js"></script>
+    <script src="/js/customer-management.js"></script>
 </body>
 </html>
