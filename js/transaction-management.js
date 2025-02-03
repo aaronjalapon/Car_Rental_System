@@ -4,13 +4,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.openModal = function() {
         modal.style.display = 'block';
+        setTimeout(() => modal.classList.add('show'), 10);
         populateReservations();
     };
 
     window.closeModal = function() {
-        modal.style.display = 'none';
-        form.reset();
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            form.reset();
+        }, 300);
     };
+
+    // Add click outside modal to close
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
 
     function populateReservations() {
         // Add reservation population logic here

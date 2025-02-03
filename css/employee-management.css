@@ -168,33 +168,43 @@ tr:hover {
     color: white;
 }
 
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
 /* Update Modal Styles */
 .modal {
     display: none;
     position: fixed;
-    z-index: 9999;
-    left: 0;
+    justify-content: center;
+    align-items: center;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.modal-content {
-    background: #2d2d2d;
-    margin: 5% auto;
-    padding: 30px;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 10px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .modal.show {
     opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background: #2d2d2d;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+    transform: translateY(-50%);
 }
 
 .modal.show .modal-content {

@@ -9,27 +9,28 @@ document.addEventListener('DOMContentLoaded', function() {
     addBtn.addEventListener('click', function() {
         console.log('Opening modal'); // Debug line
         modal.style.display = 'block';
+        setTimeout(() => modal.classList.add('show'), 10);
         document.querySelector('.modal-title').textContent = 'Add New Employee';
     });
 
     // Close modal handlers
-    closeBtn.addEventListener('click', function() {
+    function closeModal() {
         console.log('Closing modal'); // Debug line
-        modal.style.display = 'none';
-        form.reset();
-    });
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            form.reset();
+        }, 300);
+    }
 
-    cancelBtn.addEventListener('click', function() {
-        console.log('Canceling modal'); // Debug line
-        modal.style.display = 'none';
-        form.reset();
-    });
+    closeBtn.addEventListener('click', closeModal);
+
+    cancelBtn.addEventListener('click', closeModal);
 
     // Close modal when clicking outside
     window.addEventListener('click', function(e) {
         if (e.target === modal) {
-            modal.style.display = 'none';
-            form.reset();
+            closeModal();
         }
     });
 
@@ -45,8 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Form submitted'); // Debug line
         // Add your form submission logic here
         
-        modal.style.display = 'none';
-        form.reset();
+        closeModal();
     });
 
     // Edit employee
@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.modal-title').textContent = 'Edit Employee';
             // Populate form with employee data
             modal.style.display = 'block';
+            setTimeout(() => modal.classList.add('show'), 10);
         });
     });
 

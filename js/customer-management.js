@@ -18,23 +18,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Open modal
+    // Open modal with animation
     addBtn.addEventListener('click', function() {
-        modal.style.display = 'block';
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('show'), 10);
         document.querySelector('.modal-title').textContent = 'Add New Customer';
     });
 
-    // Close modal
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none';
+    // Close modal with animation
+    function closeModal() {
+        modal.classList.remove('show');
+        setTimeout(() => modal.style.display = 'none', 300);
         form.reset();
-    });
+    }
+
+    closeBtn.addEventListener('click', closeModal);
 
     // Close modal when clicking outside
     window.addEventListener('click', function(e) {
         if (e.target === modal) {
-            modal.style.display = 'none';
-            form.reset();
+            closeModal();
         }
     });
 
@@ -51,10 +54,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Edit customer
     document.querySelectorAll('.btn-edit').forEach(btn => {
         btn.addEventListener('click', function() {
-            const row = this.closest('tr');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
             document.querySelector('.modal-title').textContent = 'Edit Customer';
             // Populate form with customer data
-            modal.style.display = 'block';
         });
     });
 
