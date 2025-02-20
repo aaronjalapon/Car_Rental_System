@@ -1,0 +1,63 @@
+.settings-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.settings-section {
+    margin-bottom: 40px;
+}
+
+.settings-section h2 {
+    margin-bottom: 20px;
+    color: #db0000;
+}
+
+.settings-card {
+    background: #2d2d2d;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #3d3d3d;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+/* Form styling */
+#accountSettingsForm .form-group {
+    margin-bottom: 20px;
+}
+
+#accountSettingsForm input,
+select {
+    width: 98%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #3d3d3d;
+    background: #1a1a1a;
+    color: white;
+    margin-top: 5px;
+}
+
+.save-btn {
+    background: #db0000;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.save-btn:hover {
+    background: #ff0000;
+}

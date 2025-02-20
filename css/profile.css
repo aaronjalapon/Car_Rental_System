@@ -1,0 +1,187 @@
+:root {
+    --primary-color: #db0000;
+    --secondary-color: #1a1a1a;
+    --text-color: #ffffff;
+    --border-color: #3d3d3d;
+    --hover-color: #ff0000;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0rem auto;
+    padding: 6rem 1rem;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-section {
+    background: #2d2d2d;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-section h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    text-align: right;
+}
+
+.save-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.license-document {
+    margin-top: 1.5rem;
+}
+
+.document-preview {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+}
+
+.document-preview i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.update-doc {
+    margin-left: auto;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.update-doc:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.license-container {
+    text-align: center;
+}
+
+.license-preview {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.license-preview img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.license-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.license-preview:hover .license-overlay {
+    opacity: 1;
+}
+
+.upload-license-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.upload-license-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.license-help {
+    color: #999;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 1rem;
+    }
+
+    .profile-section {
+        padding: 1rem;
+    }
+
+    .form-actions {
+        text-align: center;
+    }
+
+    .save-btn {
+        width: 100%;
+    }
+}

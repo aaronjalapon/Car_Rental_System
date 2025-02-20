@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reservations - Car Rental Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/my-reservations.css">
+    <link rel="stylesheet" href="/css/customer-rental.css">
+    <link rel="stylesheet" href="/css/landing-page.css">
+</head>
+<body>
+    <header>
+        <div class="logo">DriveNow</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="customer-rental.html">Services</a>
+            <a href="my-reservations.html" class="active">My Reservations</a>
+            <a href="#" class="login-btn">My Profile</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>My Reservations</h1>
+        
+        <div class="reservation-filters">
+            <select id="statusFilter">
+                <option value="all">All Reservations</option>
+                <option value="active">Active</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+            <input type="text" id="searchReservation" placeholder="Search by car or reservation ID...">
+        </div>
+
+        <div class="reservations-grid">
+            <!-- Reservations will be dynamically added here -->
+        </div>
+    </main>
+
+    <!-- Reservation Details Modal -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="reservationDetails">
+                <!-- Reservation details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/my-reservations.js"></script>
+    <script src="/js/navbar.js"></script>
+</body>
+</html>
