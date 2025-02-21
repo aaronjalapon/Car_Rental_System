@@ -149,7 +149,6 @@ function openRentalModal(carId) {
         <span class="close" title="Close">&times;</span>
         <h2>Rent ${car.brand} ${car.model}</h2>
         <div class="rental-flow">
-            <!-- Step 1: Rental Details -->
             <div class="rental-step" id="rentalDetails">
                 <h3>Rental Details</h3>
                 <form id="rentalForm">
@@ -175,100 +174,47 @@ function openRentalModal(carId) {
                             <span class="total-amount">₱0</span>
                         </div>
                     </div>
-                    <button type="button" class="next-btn" onclick="showPaymentStep()">
-                        Proceed to Payment
+                    <div class="payment-notice">
+                        <p><i class="fas fa-info-circle"></i> Payment Notice:</p>
+                        <p>Please note that payment will be processed in cash at our office during vehicle pick-up. 
+                        Bring a valid ID and the total amount shown above.</p>
+                    </div>
+                    <button type="submit" class="confirm-btn">
+                        Confirm Reservation
                     </button>
-                </form>
-            </div>
-
-            <!-- Step 2: Payment Details -->
-            <div class="rental-step" id="paymentDetails" style="display: none;">
-                <h3>Payment Details</h3>
-                <form id="paymentForm">
-                    <div class="payment-methods">
-                        <label class="payment-method">
-                            <input type="radio" name="paymentMethod" value="credit" checked>
-                            <span class="method-icon"><i class="fas fa-credit-card"></i></span>
-                            <span>Credit Card</span>
-                        </label>
-                        <label class="payment-method">
-                            <input type="radio" name="paymentMethod" value="gcash">
-                            <span class="method-icon"><i class="fas fa-wallet"></i></span>
-                            <span>GCash</span>
-                        </label>
-                    </div>
-                    <div id="creditCardFields">
-                        <div class="form-group">
-                            <label>Card Number</label>
-                            <input type="text" pattern="[0-9]{16}" placeholder="1234 5678 9012 3456" required>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Expiry Date</label>
-                                <input type="text" placeholder="MM/YY" required>
-                            </div>
-                            <div class="form-group">
-                                <label>CVV</label>
-                                <input type="text" pattern="[0-9]{3,4}" placeholder="123" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <button type="button" class="back-btn" onclick="showRentalStep()">
-                            Back
-                        </button>
-                        <button type="submit" class="confirm-btn">
-                            Confirm Payment
-                        </button>
-                    </div>
                 </form>
             </div>
         </div>
     `;
-
-    // Setup event listeners for the new forms
-    setupPaymentFormListeners();
+    
+    // Update form listener
+    document.getElementById('rentalForm').addEventListener('submit', handleReservation);
     
     modal.style.display = 'block';
 }
 
-function showPaymentStep() {
-    const rentalForm = document.getElementById('rentalForm');
-    if (!rentalForm.checkValidity()) {
-        rentalForm.reportValidity();
-        return;
-    }
-    
-    document.getElementById('rentalDetails').style.display = 'none';
-    document.getElementById('paymentDetails').style.display = 'block';
-}
+// Remove these functions as they're no longer needed:
+// - showPaymentStep()
+// - showRentalStep()
+// - setupPaymentFormListeners()
+// - handlePaymentSubmission()
 
-function showRentalStep() {
-    document.getElementById('paymentDetails').style.display = 'none';
-    document.getElementById('rentalDetails').style.display = 'block';
-}
-
-function setupPaymentFormListeners() {
-    const paymentForm = document.getElementById('paymentForm');
-    const paymentMethods = document.getElementsByName('paymentMethod');
-    const creditCardFields = document.getElementById('creditCardFields');
-
-    paymentMethods.forEach(method => {
-        method.addEventListener('change', () => {
-            creditCardFields.style.display = 
-                method.value === 'credit' ? 'block' : 'none';
-        });
-    });
-
-    paymentForm.addEventListener('submit', handlePaymentSubmission);
-}
-
-function handlePaymentSubmission(e) {
+// Update handleReservation function
+function handleReservation(e) {
     e.preventDefault();
     
-    // Here you would handle the payment processing
-    // For demo purposes, we'll just show a success message
-    alert('Payment successful! Your car rental has been confirmed.');
+    // Collect form data
+    const formData = new FormData(e.target);
+    const reservationData = {
+        pickupDate: formData.get('pickupDate'),
+        returnDate: formData.get('returnDate')
+    };
+
+    // Here you would typically send this data to your backend
+    console.log('Reservation data:', reservationData);
+    
+    // Show success message
+    alert('Reservation submitted successfully! Please visit our office for payment and vehicle pick-up.');
     modal.style.display = 'none';
 }
 
@@ -335,7 +281,7 @@ function handleReservation(e) {
     console.log('Reservation data:', reservationData);
     
     // Show success message
-    alert('Reservation submitted successfully!');
+    alert('Reservation submitted successfully! Please visit our office for payment and vehicle pick-up.');
     modal.style.display = 'none';
 }
 

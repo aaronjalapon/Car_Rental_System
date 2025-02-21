@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/admin-panel.css">
+    <link rel="stylesheet" href="/css/car-report.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Admin Panel - Car Rental</title>
+    <title>Car Report - Car Rental</title>
 </head>
 <body>
     <div class="overlay"></div>
@@ -22,8 +23,8 @@
             <div class="nav-section">
                 <p><i class="fas fa-chart-bar"></i> Reports</p>
                 <a href="/html/transaction-management.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
-                <a href="/html/sales-report.html" class="active"><i class="fas fa-chart-line"></i> Sales Report</a>
-                <a href="/html/car-report.html"><i class="fas fa-file-alt"></i> Car Report</a>
+                <a href="/html/sales-report.html"><i class="fas fa-chart-line"></i> Sales Report</a>
+                <a href="/html/car-report.html" class="active"><i class="fas fa-file-alt"></i> Car Report</a>
             </div>
             
             <a href="/html/login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -36,62 +37,63 @@
             <span></span>
             <span></span>
         </div>
+
         <div class="dashboard-card">
             <div class="dashboard-header">
-                <h1>Today's Statistics</h1>
-                <p>Tue, Jan 28, 2025</p>
+                <h1>Car Fleet Overview</h1>
             </div>
 
             <div class="dashboard-statistics">
                 <div class="stat">
-                    <h2>&#8369;9460.00</h2>
-                    <p>Income</p>
+                    <h2>85%</h2>
+                    <p>Fleet Utilization</p>
                 </div>
                 <div class="stat">
-                    <h2>&#8369;5660.00</h2>
-                    <p>Expenses</p>
+                    <h2>24</h2>
+                    <p>Total Cars</p>
                 </div>
                 <div class="stat">
-                    <h2>54%</h2>
-                    <p>Hire Rate</p>
+                    <h2>4</h2>
+                    <p>Under Maintenance</p>
                 </div>
             </div>
         </div>
 
-        <div class="live-status">
-            <h2>Live Car Status</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Car No.</th>
-                        <th>Driver</th>
-                        <th>Status</th>
-                        <th>Earning</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>6465</td>
-                        <td>Alex Noman</td>
-                        <td><span class="status-dot completed"></span>Completed</td>
-                        <td>&#8369;35.44</td>
-                    </tr>
-                    <tr>
-                        <td>5665</td>
-                        <td>Razib Rahman</td>
-                        <td><span class="status-dot pending"></span>Pending</td>
-                        <td>&#8369;0.00</td>
-                    </tr>
-                    <tr>
-                        <td>1755</td>
-                        <td>Luke Norton</td>
-                        <td><span class="status-dot in-route"></span>In route</td>
-                        <td>&#8369;23.50</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="report-section">
+            <div class="report-card">
+                <h2>Car Performance Report</h2>
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Car Model</th>
+                            <th>License Plate</th>
+                            <th>Total Rentals</th>
+                            <th>Revenue</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Toyota Camry</td>
+                            <td>ABC-123</td>
+                            <td>45</td>
+                            <td>₱125,000</td>
+                            <td><span class="status active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>Honda Civic</td>
+                            <td>XYZ-789</td>
+                            <td>38</td>
+                            <td>₱98,500</td>
+                            <td><span class="status maintenance">Maintenance</span></td>
+                        </tr>
+                        <!-- More rows will be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <script src="/js/admin-panel.js"></script>
+    <script src="/js/car-report.js"></script>
 </body>
 </html>

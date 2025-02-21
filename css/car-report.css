@@ -1,0 +1,77 @@
+.filter-btn {
+    padding: 8px 15px;
+    background: #db0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: #ff0000;
+}
+
+.report-section {
+    margin-top: 20px;
+}
+
+.report-card {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 1px solid #3d3d3d;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 15px;
+}
+
+.report-table th {
+    background-color: #db0000;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.report-table td {
+    padding: 12px;
+    border-bottom: 1px solid #3d3d3d;
+}
+
+.report-table tr:hover td {
+    background-color: #353535;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.status.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status.maintenance {
+    background-color: #FFC107;
+    color: black;
+}
+
+.status.upcoming {
+    background-color: #2196F3;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .report-table {
+        display: block;
+        overflow-x: auto;
+    }
+}

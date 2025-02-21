@@ -518,6 +518,28 @@ body {
     margin-top: 20px;
 }
 
+.payment-notice {
+    background-color: rgba(33, 150, 243, 0.1);
+    border: 1px solid #2196F3;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.payment-notice p {
+    margin: 5px 0;
+    color: #fff;
+}
+
+.payment-notice p:first-child {
+    font-weight: bold;
+    color: #2196F3;
+}
+
+.payment-notice i {
+    margin-right: 8px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .search-form {
