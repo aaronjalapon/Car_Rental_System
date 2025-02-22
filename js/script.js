@@ -23,10 +23,10 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     .then(data => {
         if (data.status === 'admin') {
             alert(data.message);
-            window.location.href = 'testAdmin.html';  // Redirect to admin dashboard
+            window.location.href = '../html/admin-panel.html';  // Redirect to admin dashboard
         } else if (data.status === 'user') {
             alert(data.message);
-            window.location.href = 'test.html';  // Redirect to user dashboard
+            window.location.href = '../html/try.html';  // Redirect to user dashboard
         } else {
             alert(data.message);
         }
@@ -36,17 +36,6 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
         alert('An error occurred. Please try again.');
     });
 });
-
-const togglePassword = document.getElementById('togglePassword');
-const passwordInput = document.getElementById('password');
-
-if (togglePassword && passwordInput) {
-    togglePassword.addEventListener('click', function() {
-        const type = passwordInput.type === 'password' ? 'text' : 'password';
-        passwordInput.type = type;
-        this.classList.toggle('fa-eye-slash');
-    });
-}
 
 // Forgot Password Modal Functionality
 const forgotPasswordLink = document.getElementById('forgotPasswordLink');

@@ -123,39 +123,80 @@ tr:hover td {
     color: #3f51b5;
 }
 
+/* Existing CSS remains the same until the actions styling */
+
+/* Updated Action Buttons Styling */
 .actions {
     display: flex;
-    gap: 8px;
+    gap: 6px;
+    justify-content: center;
 }
 
-.actions button {
-    padding: 8px;
+/* Style for all action buttons */
+.edit-btn,
+.view-btn,
+.delete-btn {
+    background: none;
     border: none;
-    border-radius: 6px;
+    padding: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
 }
 
-.btn-edit {
-    background-color: #2196F3;
+/* Individual button hover effects */
+.edit-btn:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.view-btn:hover {
+    background-color: rgba(0, 0, 255, 0.1);
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+/* Updated Icon styles with more specificity */
+.actions .edit-btn i {
+    color: #4CAF50 !important;
+}
+
+.actions .view-btn i {
+    color: #2196F3 !important;
+}
+
+.actions .delete-btn i {
+    color: #f44336 !important;
+}
+
+/* Tooltip styling */
+.edit-btn,
+.view-btn,
+.delete-btn {
+    position: relative;
+}
+
+.edit-btn:hover::after,
+.view-btn:hover::after,
+.delete-btn:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
     color: white;
-}
-
-.btn-view {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.btn-delete {
-    background-color: #f44336;
-    color: white;
-}
-
-.edit-btn:hover, 
-.btn-view:hover, 
-.btn-delete:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1;
 }
 
 .pagination {
@@ -196,16 +237,14 @@ tr:hover td {
 .modal {
     display: none;
     position: fixed;
-    justify-content: center;
-    align-items: center;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    overflow-y: auto;
+    padding: 40px 0;
 }
 
 .modal.show {
@@ -216,20 +255,14 @@ tr:hover td {
     position: relative;
     background: #2d2d2d;
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transform: translateY(-50px);
-    transition: transform 0.3s ease;
-    transform: translateY(-50%);
+    max-height: none; /* Remove max-height constraint */
+    transform: none; /* Remove transform */
 }
-
-.modal.show .modal-content {
-    transform: translateY(0);
-}
-
 
 .close {
     position: absolute;
@@ -310,5 +343,155 @@ tr:hover td {
     
     .table-container {
         margin: 0 -20px;
+    }
+    
+    .customer-details {
+        grid-template-columns: 1fr; /* Stack on mobile */
+    }
+    
+    .modal {
+        padding: 20px 0;
+    }
+}
+
+/* ...existing code... */
+
+.license-status {
+    text-align: center;
+}
+
+.license-status i {
+    font-size: 1.2em;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 35px; /* Add this line to adjust horizontal position */
+}
+
+.text-success {
+    color: #4CAF50;
+}
+
+.text-danger {
+    color: #f44336;
+}
+
+.text-warning {
+    color: #ffc107;
+}
+
+.customer-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.info-section p {
+    margin: 10px 0;
+}
+
+.license-section {
+    text-align: center;
+}
+
+.license-section img {
+    max-width: 100%;
+    height: auto;
+    margin: 15px 0;
+    border-radius: 8px;
+    max-height: 300px;
+    object-fit: contain;
+    border: 1px solid #3d3d3d;
+    background-color: #1a1a1a;
+    padding: 10px;
+}
+
+.verification-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.verification-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.verify-btn, .invalid-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.verify-btn:hover:not(:disabled) {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+.invalid-btn:hover:not(:disabled) {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+}
+
+.verify-btn:disabled, .invalid-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Alert Styles */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    min-width: 300px;
+    padding: 15px;
+    border-radius: 5px;
+    animation: slideIn 0.3s ease-out;
+}
+
+.alert-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.alert-success {
+    background-color: rgba(76, 175, 80, 0.9);
+    color: white;
+}
+
+.alert-error {
+    background-color: rgba(244, 67, 54, 0.9);
+    color: white;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
     }
 }

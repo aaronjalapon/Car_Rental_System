@@ -269,7 +269,7 @@ body {
 
 .form-group input,
 .form-group select {
-    width: 98%;
+    width: 100%;
     padding: 12px;
     border-radius: 8px;
     border: 1px solid #3d3d3d;

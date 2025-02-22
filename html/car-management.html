@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/admin-panel.css">
+    <link rel="stylesheet" href="../css/admin-panel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="/css/car-management.css">
+    <link rel="stylesheet" href="../css/car-management.css">
     <title>Cars - Car Rental</title>
 </head>
 <body>
@@ -13,21 +13,21 @@
     <div class="sidebar">
         <h2><i class="fas fa-car"></i> Car Rental</h2>
         <nav>
-            <a href="/html/admin-panel.html"><i class="fas fa-home"></i> Dashboard</a>
-            <a href="/html/car-management.html"><i class="fas fa-car"></i> Cars</a>
-            <a href="/html/customer-management.html"><i class="fas fa-users"></i> Customers</a>
-            <a href="/html/employee-management.html"><i class="fas fa-user-tie"></i> Employees</a>
-            <a href="/html/reservation-management.html"><i class="fas fa-calendar-check"></i> Reservations</a>
-            <a href="/html/settings.html"><i class="fas fa-cog"></i> Settings</a>
+            <a href="../html/admin-panel.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="../html/car-management.html"><i class="fas fa-car"></i> Cars</a>
+            <a href="../html/customer-management.html"><i class="fas fa-users"></i> Customers</a>
+            <a href="../html/employee-management.html"><i class="fas fa-user-tie"></i> Employees</a>
+            <a href="../html/reservation-management.html"><i class="fas fa-calendar-check"></i> Reservations</a>
+            <a href="#"><i class="fas fa-cog"></i> Settings</a>
             
             <div class="nav-section">
                 <p><i class="fas fa-chart-bar"></i> Reports</p>
-                <a href="/html/transaction-management.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
-                <a href="/html/sales-report.html" class="active"><i class="fas fa-chart-line"></i> Sales Report</a>
-                <a href="/html/car-report.html"><i class="fas fa-file-alt"></i> Car Report</a>
+                <a href="../html/transaction-management.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="#"><i class="fas fa-credit-card"></i> Payment Details</a>
+                <a href="#"><i class="fas fa-file-alt"></i> Car Report</a>
             </div>
             
-            <a href="/html/login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="../html/login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
     </div>
 
@@ -54,12 +54,13 @@
                 <div class="filter-group">
                     <select id="brandFilter">
                         <option value="">All Brands</option>
-                        <option value="Toyota">Toyota</option>
-                        <option value="Honda">Honda</option>
-                        <option value="Ford">Ford</option>
+                        <option value="Toyota">Mitsubishi</option>
+                        <option value="Honda">Toyota</option>
+                        <option value="Ford">Nissan</option>
                     </select>
                     <select id="typeFilter">
                         <option value="">All Types</option>
+                        <option value="Hatchback">Hatchback</option>
                         <option value="Sedan">Sedan</option>
                         <option value="SUV">SUV</option>
                         <option value="Van">Van</option>
@@ -67,43 +68,22 @@
                 </div>
             </div>
 
+            <!-- Replace the current table body with an empty one -->
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>Car ID</th>
-                            <th>Image</th>
-                            <th>Brand & Model</th>
-                            <th>Body Type</th>
-                            <th>Seat Capacity</th>
-                            <th>Status</th>
-                            <th>Price</th>
-                            <th>Actions</th>
+                            <th class="text-center">Car ID</th>
+                            <th class="text-left">Brand & Model</th>
+                            <th class="text-center">Body Type</th>
+                            <th class="text-center">Plate Number</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-right">Price</th>
+                            <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#CR001</td>
-                            <td><img src="/images/car1.jpg" alt="Car" class="car-thumbnail"></td>
-                            <td>
-                                <div class="car-info">
-                                    <strong>Toyota Camry</strong>
-                                    <span>2023 Model</span>
-                                </div>
-                            </td>
-                            <td>Sedan</td>
-                            <td>5</td>
-                            <td><span class="status available">Available</span></td>
-                            <td>₱2,500/day</td>
-                            <td class="actions">
-                                <button class="edit-btn" onclick="editCar(1)">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="delete-btn" onclick="deleteCar(1)">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        <!-- Data will be dynamically loaded here -->
                     </tbody>
                 </table>
             </div>
@@ -136,22 +116,27 @@
                     <div class="form-group">
                         <label>Body Type</label>
                         <select name="bodyType" required>
+                            <option value="Hatchback">Hatchback</option>
                             <option value="Sedan">Sedan</option>
                             <option value="SUV">SUV</option>
                             <option value="Van">Van</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Seat Capacity</label>
-                        <input type="number" name="seats" required>
+                        <label>Plate Number</label>
+                        <input type="text" name="plate_number" required>
                     </div>
                     <div class="form-group">
-                        <label>Price per Day</label>
+                        <label>Year</label>
+                        <input type="number" name="year" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Daily Rate</label>
                         <input type="number" name="price" required>
                     </div>
                     <div class="form-group">
                         <label>Car Image</label>
-                        <input type="file" name="carImage" accept="image/*">
+                        <input type="file" name="carImage" accept="image/*" required>
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="save-btn">Save Car</button>
@@ -161,7 +146,7 @@
             </div>
         </div>
     </div>
-    <script src="/js/admin-panel.js"></script>
-    <script src="/js/car-management.js"></script>
+    <script src="../js/admin-panel.js"></script>
+    <script src="../js/car-management.js"></script>
 </body>
 </html>

@@ -75,20 +75,32 @@ table {
     margin-top: 20px;
 }
 
-.car-thumbnail {
-    width: 60px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 4px;
+table th, 
+table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #3d3d3d;
 }
+
+table th {
+    background-color: #1a1a1a;
+    font-weight: bold;
+}
+
+/* Remove .car-thumbnail class since we're not using images anymore */
 
 .car-info {
     display: flex;
     flex-direction: column;
+    gap: 4px;
+}
+
+.car-info strong {
+    font-size: 1em;
+    color: #fff;
 }
 
 .car-info span {
-    font-size: 0.8em;
+    font-size: 0.85em;
     color: #888;
 }
 
@@ -225,4 +237,64 @@ table {
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    min-width: 300px;
+    padding: 15px;
+    border-radius: 5px;
+    animation: slideIn 0.3s ease-out;
+}
+
+.alert-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.alert-success {
+    background-color: rgba(76, 175, 80, 0.9);
+    color: white;
+}
+
+.alert-error {
+    background-color: rgba(244, 67, 54, 0.9);
+    color: white;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Add text alignment classes */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
 }

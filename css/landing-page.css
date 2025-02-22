@@ -6,15 +6,12 @@ body {
 }
 
 header {
-    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
     background: linear-gradient(to right, #000000, #960000);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    position: fixed;
-    z-index: 1000;
 }
 
 header .logo {
@@ -43,93 +40,8 @@ header nav a:hover {
     transform: translateY(-2px);
 }
 
-.hamburger {
-    display: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1000;
-    margin-right: 10px;
-}
-
-.hamburger span {
-    display: block;
-    width: 30px;
-    height: 2px;
-    background-color: #ffffff;
-    margin: 6px 0;
-    transition: all 0.3s ease-in-out;
-}
-
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-20px);
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
-
-@media screen and (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    nav {
-        display: none;
-        width: 100%;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        left: 0;
-        background: linear-gradient(to bottom, #000000, #1a1a1a);
-        padding: 20px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    nav.active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    nav a {
-        margin: 8px 0;
-        width: 80%;
-        max-width: 300px;
-        text-align: center;
-        padding: 15px 20px;
-        border-radius: 6px;
-        font-size: 1.2em;
-    }
-
-    nav a:hover {
-        background-color: #960000;
-        transform: scale(1.05);
-    }
-
-    .login-btn {
-        background-color: #960000;
-        margin-top: 15px;
-        width: 80%;
-        max-width: 300px;
-    }
-
-    body.menu-open {
-        overflow: initial;
-    }
-}
-
 .hero {
-    background: url(/images/car_bg.jpg) no-repeat center center/cover;
+    background: url(../images/car_bg.jpg) no-repeat center center/cover;
     position: relative;
     height: 600px;
     display: flex;
@@ -157,35 +69,16 @@ header nav a:hover {
     z-index: 2;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .hero h1 {
     font-size: 3.5em;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    animation: slideUp 1s ease forwards;
 }
 
 .hero p {
     font-size: 1.4em;
     margin-bottom: 30px;
     max-width: 600px;
-    animation: slideUp 1s ease 0.3s forwards;
-    opacity: 0;
 }
 
 .hero button {
@@ -199,8 +92,6 @@ header nav a:hover {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-    animation: slideUp 1s ease 0.6s forwards;
-    opacity: 0;
 }
 
 .hero button:hover {
@@ -240,18 +131,6 @@ header nav a:hover {
 }
 
 .feature:hover img {
-    transform: scale(1.1);
-}
-
-.feature i {
-    font-size: 4em;
-    color: #960000;
-    margin-bottom: 35px;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.feature:hover i {
     transform: scale(1.1);
 }
 
