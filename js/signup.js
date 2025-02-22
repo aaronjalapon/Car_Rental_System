@@ -1,81 +1,85 @@
-document.getElementById('registrationForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+console.log('Script is running');
 
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const contact = document.getElementById('contact').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const confirmPassword = document.getElementById('confirmPassword').value.trim();
-    const driversLicense = document.getElementById('driversLicense').files[0];
-
-    if (!firstName || !lastName || !email || !contact || !password || !confirmPassword || !driversLicense) {
-        alert('Please fill in all fields and upload your Driver’s License.');
+// First, let's make sure the script runs after DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM is loaded');
+    
+    // Get the form element
+    const registrationForm = document.getElementById('registrationForm');
+    console.log('Form:', registrationForm);
+    
+    // Check if form exists
+    if (!registrationForm) {
+        console.error('Registration form not found');
         return;
     }
 
-    if (!/^[0-9]{10,15}$/.test(contact)) {
-        alert('Contact number must be between 10 and 15 digits.');
-        return;
-    }
+    // Add submit event listener to the form
+    registrationForm.addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+        
+        // Get each form element individually and log its value
+        const nameInput = document.getElementById('name');
+        console.log('Name input:', nameInput);
+        
+        const emailInput = document.getElementById('email');
+        console.log('Email input:', emailInput);
+        
+        const contactInput = document.getElementById('contact');
+        console.log('Contact input:', contactInput);
+        
+        const passwordInput = document.getElementById('password');
+        console.log('Password input:', passwordInput);
+        
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        console.log('Confirm password input:', confirmPasswordInput);
+        
+        const dlpicInput = document.getElementById('dlpic');
+        console.log('Driver\'s license input:', dlpicInput);
 
-    if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-        return;
-    }
-
-    if (password.length < 6) {
-        alert('Password must be at least 6 characters long.');
-        return;
-    }
-
-    // Prepare form data for submission
-    const formData = new FormData();
-    formData.append('fname', firstName);
-    formData.append('lname', lastName);
-    formData.append('email', email);
-    formData.append('contact', contact);
-    formData.append('password', password);
-    formData.append('confirmPassword', confirmPassword);
-    formData.append('dlpic', driversLicense);
-
-    // Submit form data via AJAX
-    fetch('../php/signup.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            alert('Registration successful! Welcome to Car Rental Services.');
-            window.location.href = '../html/login.html';
-        } else {
-            alert('Error: ' + data.message);
+        // Only proceed if all elements exist
+        if (!nameInput || !emailInput || !contactInput || !passwordInput || !confirmPasswordInput || !dlpicInput) {
+            console.error('One or more form elements not found');
+            return;
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred during registration. Please try again.');
+
+        // Create FormData object
+        const formData = new FormData();
+        
+        // Add form data
+        formData.append('name', nameInput.value.trim());
+        formData.append('email', emailInput.value.trim());
+        formData.append('contact', contactInput.value.trim());
+        formData.append('password', passwordInput.value);
+        formData.append('confirmPassword', confirmPasswordInput.value);
+
+        // Check if a file is selected
+        if (dlpicInput.files.length > 0) {
+            formData.append('dlpic', dlpicInput.files[0]);
+        } else {
+            console.error('No file selected for dlpic');
+            alert('Please select a file for the driver\'s license.');
+            return;
+        }
+
+        // Submit the form data
+        fetch('../php/signup.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Registration successful! Welcome to Car Rental Services.');
+                window.location.href = '../html/login.html';
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred during registration. Please try again.');
+        });
     });
 });
-
-const togglePassword = document.getElementById('togglePassword');
-const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
-const passwordInput = document.getElementById('password');
-const confirmPasswordInput = document.getElementById('confirmPassword');
-
-if (togglePassword && passwordInput) {
-    togglePassword.addEventListener('click', function() {
-        const type = passwordInput.type === 'password' ? 'text' : 'password';
-        passwordInput.type = type;
-        this.classList.toggle('fa-eye-slash');
-    });
-}
-
-if (toggleConfirmPassword && confirmPasswordInput) {
-    toggleConfirmPassword.addEventListener('click', function() {
-        const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
-        confirmPasswordInput.type = type;
-        this.classList.toggle('fa-eye-slash');
-    });
-}
