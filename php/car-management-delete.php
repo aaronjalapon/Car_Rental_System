@@ -1,7 +1,15 @@
-
 <?php
 require_once 'conn.php';
 header('Content-Type: application/json');
+
+if (!$conn) {
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Database connection failed'
+    ]);
+    exit;
+}
 
 try {
     $data = json_decode(file_get_contents('php://input'), true);
@@ -37,6 +45,8 @@ try {
     ]);
 }
 
-$stmt->close();
+if (isset($stmt)) {
+    $stmt->close();
+}
 $conn->close();
 ?>

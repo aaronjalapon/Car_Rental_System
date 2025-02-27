@@ -138,6 +138,19 @@ body {
     color: var(--text-color);
 }
 
+.no-reservations {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    background: #2d2d2d;
+    border-radius: 10px;
+}
+
+.no-reservations p {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
 @media (max-width: 768px) {
     .reservation-filters {
         flex-direction: column;

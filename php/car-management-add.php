@@ -1,11 +1,15 @@
 <?php
+include_once 'conn.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
 header('Content-Type: application/json');
 
 try {
-    require_once 'conn.php';
+    // Check if connection is established
+    if (!isset($conn) || $conn->connect_error) {
+        throw new Exception('Database connection failed: ' . ($conn->connect_error ?? 'Connection not established'));
+    }
 
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         throw new Exception('Invalid request method');
