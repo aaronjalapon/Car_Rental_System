@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Load profile data when page loads
+    loadProfileData();
+
     // Handle profile form submission
     const profileForm = document.getElementById('profileForm');
     profileForm.addEventListener('submit', (e) => {
@@ -47,21 +50,67 @@ document.addEventListener('DOMContentLoaded', () => {
             uploadLicenseImage(file);
         }
     });
-});
 
-// Function to save profile data
-async function saveProfileData(data) {
-    try {
-        // Here you would typically make an API call to save the data
-        console.log('Saving profile data:', data);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        alert('Profile updated successfully!');
-    } catch (error) {
-        console.error('Error saving profile:', error);
-        alert('Failed to update profile. Please try again.');
+    async function loadProfileData() {
+        try {
+            const response = await fetch('/php/profile-management.php');
+            const result = await response.json();
+            
+            if (result.success) {
+                const data = result.data;
+                document.getElementById('fullName').value = data.name;
+                document.getElementById('email').value = data.email;
+                document.getElementById('phone').value = data.contact;
+                document.getElementById('address').value = data.address;
+                
+                // If there's a license image, display it
+                if (data.license) {
+                    document.getElementById('licenseImage').src = data.license;
+                }
+            } else {
+                showAlert('Failed to load profile data', 'error');
+            }
+        } catch (error) {
+            console.error('Error loading profile:', error);
+            showAlert('Error loading profile data', 'error');
+        }
     }
-}
+
+    async function saveProfileData(data) {
+        try {
+            const response = await fetch('/php/profile-management.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            
+            if (result.success) {
+                showAlert('Profile updated successfully', 'success');
+            } else {
+                showAlert(result.message || 'Failed to update profile', 'error');
+            }
+        } catch (error) {
+            console.error('Error saving profile:', error);
+            showAlert('Error saving profile data', 'error');
+        }
+    }
+
+    function showAlert(message, type) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type}`;
+        alertDiv.innerHTML = `
+            <div class="alert-content">
+                <span>${message}</span>
+                <button onclick="this.parentElement.parentElement.remove()">×</button>
+            </div>
+        `;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => alertDiv.remove(), 5000);
+    }
+});
 
 // Function to change password
 async function changePassword(currentPassword, newPassword) {
