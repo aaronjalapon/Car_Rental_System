@@ -1,19 +1,25 @@
-// Sample reservation data (in a real application, this would come from a backend)
-const reservations = [
-    {
-        id: "RES001",
-        carId: 1,
-        carName: "Toyota Camry",
-        carImage: "/images/camry.jpg",
-        pickupDate: "2024-01-15",
-        returnDate: "2024-01-18",
-        status: "active",
-        totalAmount: 7500,
-        paymentStatus: "paid",
-        notes: "Pick up at main branch"
-    },
-    // Add more reservation data here
-];
+async function fetchUserReservations() {
+    try {
+        const response = await fetch('api/get-reservations.php');
+        const data = await response.json();
+        console.log('Fetched reservations:', data); // Debug log
+        return data;
+    } catch (error) {
+        console.error('Error fetching reservations:', error);
+        return [];
+    }
+}
+
+async function fetchReservationDetails(reservationId) {
+    try {
+        const response = await fetch(`/api/get-reservations.php?action=details&id=${reservationId}`);
+        if (!response.ok) throw new Error('Failed to fetch reservation details');
+        return await response.json();
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
+    }
+}
 
 // DOM Elements
 const reservationsGrid = document.querySelector('.reservations-grid');
@@ -23,7 +29,8 @@ const modal = document.getElementById('reservationModal');
 const closeBtn = document.querySelector('.close');
 
 // Initialize the page
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    const reservations = await fetchUserReservations();
     displayReservations(reservations);
     setupEventListeners();
 });
@@ -38,29 +45,40 @@ function setupEventListeners() {
 }
 
 function displayReservations(reservationsToShow) {
+    console.log('Displaying reservations:', reservationsToShow); // Debug log
+    
+    if (!reservationsToShow || reservationsToShow.length === 0) {
+        reservationsGrid.innerHTML = `
+            <div class="no-reservations">
+                <p>No reservations found.</p>
+            </div>
+        `;
+        return;
+    }
+
     reservationsGrid.innerHTML = reservationsToShow.map(reservation => `
         <div class="reservation-card">
-            <span class="reservation-status status-${reservation.status}">
-                ${reservation.status.charAt(0).toUpperCase() + reservation.status.slice(1)}
+            <span class="reservation-status status-${reservation.reservation_status}">
+                ${reservation.reservation_status.charAt(0).toUpperCase() + reservation.reservation_status.slice(1)}
             </span>
             <div class="car-details">
-                <img src="${reservation.carImage}" alt="${reservation.carName}">
+                <img src="${reservation.car_image}" alt="${reservation.car_model}">
                 <div>
-                    <h3>${reservation.carName}</h3>
-                    <p>Reservation ID: ${reservation.id}</p>
+                    <h3>${reservation.car_model}</h3>
+                    <p>Reservation ID: ${reservation.reservation_id}</p>
                 </div>
             </div>
             <div class="reservation-dates">
                 <div>
                     <small>Pick-up</small>
-                    <p>${formatDate(reservation.pickupDate)}</p>
+                    <p>${formatDate(reservation.pickup_date)}</p>
                 </div>
                 <div>
                     <small>Return</small>
-                    <p>${formatDate(reservation.returnDate)}</p>
+                    <p>${formatDate(reservation.return_date)}</p>
                 </div>
             </div>
-            <button class="view-details-btn" onclick="showReservationDetails('${reservation.id}')">
+            <button class="view-details-btn" onclick="showReservationDetails('${reservation.reservation_id}')">
                 View Details
             </button>
         </div>
@@ -82,8 +100,8 @@ function handleFilters() {
     displayReservations(filteredReservations);
 }
 
-function showReservationDetails(reservationId) {
-    const reservation = reservations.find(r => r.id === reservationId);
+async function showReservationDetails(reservationId) {
+    const reservation = await fetchReservationDetails(reservationId);
     if (!reservation) return;
 
     const modalContent = document.getElementById('reservationDetails');

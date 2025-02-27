@@ -27,7 +27,7 @@
                 <a href="#"><i class="fas fa-file-alt"></i> Car Report</a>
             </div>
             
-            <a href="../html/login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="../html/login.html" class="logout"><i class="fas fa-sign-ougit-alt"></i> Logout</a>
         </nav>
     </div>
 
@@ -64,30 +64,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>201</td>
-                            <td>Jane Smith</td>
-                            <td>Manager</td>
-                            <td>jane.smith@email.com</td>
-                            <td>+1 234-567-8901</td>
-                            <td><span class="status active">Active</span></td>
-                            <td class="actions">
-                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
-                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
+                        <!-- Data will be populated by JavaScript -->
                     </tbody>
                 </table>
+            </div>
+
+            <div class="pagination">
+                <!-- ...existing pagination... -->
             </div>
         </section>
     </div>
 
-    <!-- Modal for Add/Edit Employee -->
+    <!-- Updated Modal for Add/Edit Employee -->
     <div id="employeeModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 class="modal-title">Add New Employee</h2>
+            <h2 class="modal-title">Employee Details</h2>
             <form id="employeeForm">
+                <input type="hidden" id="empId" name="id">
                 <div class="form-group">
                     <label for="empName">Full Name:</label>
                     <input type="text" id="empName" name="name" required>
@@ -96,9 +90,9 @@
                     <label for="empPosition">Position:</label>
                     <select id="empPosition" name="position" required>
                         <option value="">Select Position</option>
-                        <option value="manager">Manager</option>
-                        <option value="sales">Sales Representative</option>
-                        <option value="mechanic">Mechanic</option>
+                        <option value="CRSS manager">CRSS Manager</option>
+                        <option value="Transporter">Transporter</option>
+                        <option value="Agent">Agent</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -112,13 +106,18 @@
                 <div class="form-group">
                     <label for="empStatus">Status:</label>
                     <select id="empStatus" name="status" required>
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="On leave">On Leave</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="empAddress">Address:</label>
+                    <textarea id="empAddress" name="address" rows="3"></textarea>
+                </div>
                 <div class="form-actions">
-                    <button type="submit" class="save-btn">Save Employee</button>
-                    <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
                 </div>
             </form>
         </div>
