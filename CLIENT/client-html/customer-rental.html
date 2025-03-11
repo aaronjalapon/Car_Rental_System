@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent a Car - Car Rental Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../client-css/navbar.css">
+    <link rel="stylesheet" href="../client-css/customer-rental.css">
+    <link rel="stylesheet" href="../client-css/alerts.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-car"></i>
+            <span>DriveNow</span>
+        </div>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/MAIN/main-html/index.html" class="home-link">Home</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/customer-rental.html" class="active"><i class="fas fa-car"></i> Services</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/my-reservations.html"><i class="fas fa-calendar-check"></i> My Reservations</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/profile.html" class="profile-btn"><i class="fas fa-user"></i> My Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <div class="search-container">
+                <div class="search-form">
+                    <div class="form-group search-bar">
+                        <label><i class="fas fa-search"></i> Search Cars</label>
+                        <input type="text" id="searchInput" placeholder="Search by brand, model or plate number...">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-car"></i> Car Type</label>
+                        <select id="carType">
+                            <option value="">All Types</option>
+                            <!-- Car types will be loaded dynamically -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="available-cars">
+            <h2>Available Cars</h2>
+            <div class="filters">
+                <select id="sortBy">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name">Name</option>
+                </select>
+                <div class="price-filter">
+                    <label>Max Price:</label>
+                    <input type="range" id="priceRange" min="0" max="10000" step="500">
+                    <span id="priceValue">₱5000</span>
+                </div>
+            </div>
+
+            <div class="car-grid">
+                <!-- Car cards will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Rental Modal -->
+    <div id="rentalModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirm Reservation</h2>
+            <div class="car-details">
+                <!-- Car details will be populated dynamically -->
+            </div>
+            <form id="reservationForm">
+                <div class="form-group">
+                    <label>Pick-up Date</label>
+                    <input type="date" name="pickupDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Return Date</label>
+                    <input type="date" name="returnDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea name="notes"></textarea>
+                </div>
+                <div class="price-summary">
+                    <div class="price-row">
+                        <span>Daily Rate:</span>
+                        <span class="daily-rate">₱2,500</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Number of Days:</span>
+                        <span class="num-days">3</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total Amount:</span>
+                        <span class="total-amount">₱7,500</span>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="reserve-btn">Confirm Reservation</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-js/customer-rental.js"></script>
+    <script src="../client-js/navbar.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load car types first
+        loadCarTypes().catch(console.error);
+        
+        // Add filter handling
+        const carTypeSelect = document.getElementById('carType');
+        const priceRange = document.getElementById('priceRange');
+        const sortSelect = document.getElementById('sortBy');
+
+        if (carTypeSelect) carTypeSelect.addEventListener('change', updateFilters);
+        if (priceRange) priceRange.addEventListener('input', updateFilters);
+        if (sortSelect) sortSelect.addEventListener('change', updateFilters);
+
+        // Initial load
+        loadCars().catch(console.error);
+    });
+    </script>
+</body>
+</html>

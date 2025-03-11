@@ -1,0 +1,391 @@
+.main-content {
+    margin-left: 330px;
+    padding: 20px 30px;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    transition: margin-left 0.3s ease;
+}
+
+section {
+    margin-left: 280px;
+    padding: 2rem;
+}
+
+.card {
+    background: #2d2d2d;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.card button {
+    background: #db0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.card button:hover {
+    background: #ff0000;
+}
+
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.actions-wrapper {
+    display: flex;
+    gap: 15px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 300px;
+}
+
+.search-box input {
+    padding: 12px 40px 12px 15px;
+    border-radius: 5px;
+    border: 1px solid #3d3d3d;
+    background: #2d2d2d;
+    color: white;
+    width: 250px;
+}
+
+.search-box i {
+    position: absolute;
+    right: 12px;
+    color: #666;
+    pointer-events: none;
+}
+
+.add-btn {
+    background: #db0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.table-container {
+    background: #2d2d2d;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #3d3d3d;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+tr:hover {
+    background-color: #353535;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.status.active {
+    background: #4CAF50;
+    color: white;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    margin: 0;
+    padding: 5px 10px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actions button:first-child {
+    background: #2196F3;
+}
+
+.actions button:last-child {
+    background: #f44336;
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #2196F3;
+    color: white;
+}
+
+.delete-btn {
+    background: #f44336;
+    color: white;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+/* Update Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background: #2d2d2d;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+    transform: translateY(-50%);
+    color: #ffffff;  /* Added to ensure all text is white */
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #ffffff;  /* Changed from #666 to white */
+}
+
+.close:hover {
+    color: #ecf0f1;
+    opacity: 0.8;
+}
+
+.modal-title {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 95%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #3d3d3d;
+    background: #1a1a1a;
+    color: white;
+    margin-top: 5px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #3d3d3d;
+}
+
+.save-btn, .cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #4CAF50;
+    color: white;
+}
+
+.cancel-btn {
+    background: #666;
+    color: white;
+}
+
+/* Add these styles for the view modal */
+.employee-details {
+    padding: 20px;
+    color: #ffffff;
+}
+
+.detail-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: baseline;
+}
+
+.detail-group label {
+    font-weight: bold;
+    min-width: 120px;
+    color: #ecf0f1;  /* Changed from #333 to light color */
+}
+
+.detail-group p {
+    margin: 0;
+    padding: 5px 0;
+    color: #ffffff;  /* Changed from #666 to white */
+}
+
+.close-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Add these styles for form validation */
+.error-message {
+    color: #ff4444;
+    background-color: rgba(255, 68, 68, 0.1);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border-left: 4px solid #ff4444;
+}
+
+.form-group.error input,
+.form-group.error select {
+    border-color: #ff4444;
+}
+
+.form-group.error label {
+    color: #ff4444;
+}
+
+.form-group input:invalid,
+.form-group select:invalid {
+    border-color: #f44336;
+}
+
+.form-group input:focus:invalid,
+.form-group select:focus:invalid {
+    box-shadow: 0 0 3px #f44336;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+        width: 100%;
+    }
+    
+    section {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .header-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .actions-wrapper {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .search-box {
+        min-width: unset;
+        width: 100%;
+    }
+    
+    .search-box input {
+        width: 100%;
+    }
+    
+    th, td {
+        padding: 12px 15px;
+    }
+    
+    .modal-content {
+        width: 90%;
+    }
+    
+    .card {
+        margin: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+}

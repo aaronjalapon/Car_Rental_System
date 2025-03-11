@@ -1,0 +1,7 @@
+[27-Feb-2025 15:38:34 Europe/Berlin] PHP Warning:  require_once(conn.php): Failed to open stream: No such file or directory in C:\xamppNew\htdocs\CSE7-PROJECT\Car_Rental_System(revised3)\ADMIN\admin-php\car-management.php on line 11
+[27-Feb-2025 15:38:34 Europe/Berlin] PHP Warning:  Undefined variable $response in C:\xamppNew\htdocs\CSE7-PROJECT\Car_Rental_System(revised3)\ADMIN\admin-php\car-management.php on line 61
+[28-Feb-2025 01:36:04 Europe/Berlin] PHP Warning:  require_once(../../php/conn.php): Failed to open stream: No such file or directory in C:\xamppNew\htdocs\CSE7-PROJECT\Car_Rental_System(revised3)\ADMIN\admin-php\car-management.php on line 11
+[28-Feb-2025 01:36:04 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required '../../php/conn.php' (include_path='C:\xamppNew\php\PEAR') in C:\xamppNew\htdocs\CSE7-PROJECT\Car_Rental_System(revised3)\ADMIN\admin-php\car-management.php:11
+Stack trace:
+#0 {main}
+  thrown in C:\xamppNew\htdocs\CSE7-PROJECT\Car_Rental_System(revised3)\ADMIN\admin-php\car-management.php on line 11

@@ -1,0 +1,364 @@
+:root {
+    --primary-color: #db0000;
+    --secondary-color: #1a1a1a;
+    --text-color: #ffffff;
+    --border-color: #3d3d3d;
+    --hover-color: #ff0000;
+}
+
+/* Reuse existing styles for body and navbar */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.navbar {
+    /* ...existing code... */
+}
+
+/* Core layout containers - Updated */
+.container {
+    max-width: 1400px;
+    width: calc(100% - 80px); /* Account for padding */
+    margin: 4rem auto;
+    padding: 0 40px;
+    position: relative;
+    overflow: visible;
+}
+
+/* Reservations grid - Complete overhaul */
+.reservations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    margin: 2rem 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Card styling - Updated */
+.reservation-card {
+    width: 100%;
+    background: #2d2d2d;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 0;
+    box-sizing: border-box;
+    transform: none;
+    transition: transform 0.3s ease;
+}
+
+.reservation-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.reservation-filters select,
+.reservation-filters input {
+    padding: 0.5rem;
+    background-color: #2d2d2d;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 4px;
+}
+
+.reservation-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.status-active { background-color: #28a745; }
+.status-completed { background-color: #17a2b8; }
+.status-cancelled { background-color: #dc3545; }
+
+/* Car details container - Updated */
+.car-details {
+    width: 100%;
+    margin: 0 0 1rem 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.car-details h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+}
+
+.car-details p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+}
+
+.car-info {
+    flex: 1;
+    padding: 0.5rem 0; /* Add some vertical padding */
+    line-height: normal; /* Reset line height for text */
+    font-size: 1rem; /* Reset font size for text */
+}
+
+.car-info h3 {
+    color: #db0000;
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.car-info p {
+    color: #ffffff;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.car-details .car-info p:first-of-type {
+    margin-top: 0;
+}
+
+.car-details .car-info p:last-of-type {
+    margin-bottom: 0;
+}
+
+.reservation-dates {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.reservation-dates small {
+    color: #db0000;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.reservation-dates p {
+    color: #ffffff;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.view-details-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-details-btn:hover {
+    background-color: var(--hover-color);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #2d2d2d;
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.no-reservations {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    background: #2d2d2d;
+    border-radius: 10px;
+}
+
+.no-reservations p {
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.payment-section {
+    background: #363636;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.payment-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.payment-section p {
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.error-message {
+    grid-column: 1 / -1;
+    background: #2d2d2d;
+    border-left: 4px solid var(--primary-color);
+    padding: 1.5rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.error-message p:first-child {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Media queries - Updated for better responsiveness */
+@media screen and (max-width: 1400px) {
+    .container {
+        width: calc(100% - 60px);
+        padding: 0 30px;
+    }
+    
+    .reservations-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        padding: 4rem 2rem;
+    }
+    
+    .reservations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: calc(100% - 40px);
+        padding: 0 20px;
+        margin: 2rem auto;
+    }
+    
+    .reservation-filters {
+        flex-direction: column;
+    }
+    
+    .reservations-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .reservation-card {
+        padding: 1rem;
+    }
+}
+
+/* Alert Styles - Updated to match customer-management.css exactly */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    min-width: 300px;
+    padding: 15px;
+    border-radius: 5px;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.alert button:hover {
+    opacity: 1;
+}
+
+.alert-success {
+    background-color: rgba(76, 175, 80, 0.9);
+    color: white;
+}
+
+.alert-error {
+    background-color: rgba(244, 67, 54, 0.9);
+    color: white;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Image container - Updated */
+.car-image {
+    width: 100%;
+    height: 200px;
+    margin: 0 0 1rem 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    background: transparent;
+}
+
+/* Image styling - Updated */
+.car-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+}

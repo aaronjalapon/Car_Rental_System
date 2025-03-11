@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Car Rental Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../client-css/profile.css">
+    <link rel="stylesheet" href="../client-css/navbar.css">
+    <style>
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .status-verified {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .status-not-verified {
+            background-color: #f44336;
+            color: white;
+        }
+        .license-container img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DriveNow</div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/MAIN/main-html/index.html" class="home-link">Home</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/about.html">About</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/customer-rental.html">Services</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/my-reservations.html">My Reservations</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/profile.html" class="profile-btn">My Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <h1>My Profile</h1>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-section">
+                <h2>Personal Information</h2>
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="tel" id="contact" name="contact" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Rental</label>
+                        <span id="lastRental"></span>
+                    </div>
+                </form>
+            </div>
+
+            <div class="profile-section">
+                <h2>Driver's License</h2>
+                <div class="license-container">
+                    <img id="licenseImage" alt="Driver's License">
+                    <p class="license-status" id="verificationStatus"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../client-js/profile.js"></script>
+    <script src="../client-js/navbar.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../admin-css/admin-panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-css/car-management.css">
+    <title>Cars - Car Rental</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="sidebar">
+        <h2><i class="fas fa-car"></i> Car Rental</h2>
+        <nav>
+            <a href="../admin-html/admin-panel.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="../admin-html/car-management.html"><i class="fas fa-car"></i> Cars</a>
+            <a href="../admin-html/customer-management.html"><i class="fas fa-users"></i> Customers</a>
+            <a href="../admin-html/employee-management.html"><i class="fas fa-user-tie"></i> Employees</a>
+            <a href="../admin-html/reservation-management.html"><i class="fas fa-calendar-check"></i> Reservations</a>
+            <a href="../admin-html/settings.html" class="active"><i class="fas fa-cog"></i> Settings</a>
+            
+            <div class="nav-section">
+                <p><i class="fas fa-chart-bar"></i> Reports</p>
+                <a href="../admin-html/transaction-management.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="../admin-html/sales-report.html" class="active"><i class="fas fa-chart-line"></i> Sales Report</a>
+            </div>
+            
+            <a href="../html/login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </div>
+
+    <div class="main">
+        <div class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <section id="cars" class="dashboard-card">
+            <div class="section-header">
+                <h2><i class="fas fa-car"></i> Car Management</h2>
+                <button class="add-car-btn" onclick="openModal()">
+                    <i class="fas fa-plus"></i> Add New Car
+                </button>
+            </div>
+
+            <div class="filters">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search cars by brand, type, plate number, or status...">
+                </div>
+                <div class="filter-group">
+                    <select id="brandFilter">
+                        <option value="">All Brands</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                    <select id="typeFilter">
+                        <option value="">All Types</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Replace the current table body with an empty one -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="text-center">Car ID</th>
+                            <th style="padding-right: 30px;">Brand & Model</th>
+                            <th class="text-center">Body Type</th>
+                            <th class="text-center">Plate Number</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center" style="padding-left: 15px;">Price</th>
+                            <th class="text-center actions-header">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Separate Add Car Modal -->
+        <div id="addCarModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add New Car</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <form id="addCarForm">
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" name="brand" required placeholder="Enter brand">
+                    </div>
+                    <div class="form-group">
+                        <label>Model</label>
+                        <input type="text" name="model" required placeholder="Enter model">
+                    </div>
+                    <div class="form-group">
+                        <label>Body Type</label>
+                        <input type="text" name="bodyType" required placeholder="Enter body type">
+                    </div>
+                    <div class="form-group">
+                        <label>Plate Number</label>
+                        <input type="text" name="plate_number" required placeholder="Enter plate number">
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="number" name="year" required placeholder="Enter year">
+                    </div>
+                    <div class="form-group">
+                        <label>Daily Rate</label>
+                        <input type="number" name="price" required placeholder="Enter daily rate">
+                    </div>
+                    <div class="form-group">
+                        <label>Car Image</label>
+                        <input type="file" name="carImage" accept="image/*" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn">Add Car</button>
+                        <button type="button" class="cancel-btn" onclick="closeAddModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Separate Edit Car Modal -->
+        <div id="editCarModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Car</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <form id="editCarForm">
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" name="brand" class="readonly-field" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Model</label>
+                        <input type="text" name="model" class="readonly-field" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Body Type</label>
+                        <input type="text" name="bodyType" class="readonly-field" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Plate Number</label>
+                        <input type="text" name="plate_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="number" name="year" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Daily Rate</label>
+                        <input type="number" name="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="status" required>
+                            <option value="Available">Available</option>
+                            <option value="Unavailable">Unavailable</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn">Save Changes</button>
+                        <button type="button" class="cancel-btn" onclick="closeEditModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../admin-js/admin-panel.js"></script>
+    <script src="../admin-js/car-management.js"></script>
+</body>
+</html>
