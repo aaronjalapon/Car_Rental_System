@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../admin-css/admin-panel.css">
+    <link rel="stylesheet" href="../admin-css/sales-report.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+    <title>Sales Report - Car Rental</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="sidebar">
+        <h2><i class="fas fa-car"></i> Car Rental</h2>
+        <nav>
+            <a href="../admin-html/admin-panel.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="../admin-html/car-management.html"><i class="fas fa-car"></i> Cars</a>
+            <a href="../admin-html/customer-management.html"><i class="fas fa-users"></i> Customers</a>
+            <a href="../admin-html/employee-management.html"><i class="fas fa-user-tie"></i> Employees</a>
+            <a href="../admin-html/reservation-management.html"><i class="fas fa-calendar-check"></i> Reservations</a>
+            <a href="../admin-html/settings.html" class="active"><i class="fas fa-cog"></i> Settings</a>
+            
+            <div class="nav-section">
+                <p><i class="fas fa-chart-bar"></i> Reports</p>
+                <a href="../admin-html/transaction-management.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="../admin-html/settings.html" class="active"><i class="fas fa-cog"></i> Settings</a>
+            </div>
+            
+            <a href="/html/login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </div>
+
+    <div class="main">
+        <div class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <section class="sales-dashboard">
+            <div class="header-actions">
+                <h2>Sales Report</h2>
+                <div class="date-filter">
+                    <select id="timeRange">
+                        <option value="monthly" selected>Monthly</option>
+                        <!-- <option value="daily">Daily</option> -->
+                        <option value="weekly">Weekly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                    <button class="export-btn" onclick="exportReport()"><i class="fas fa-download"></i> Export Report</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Revenue</h3>
+                    <p class="amount" id="totalRevenue">₱0.00</p>
+                    <span class="trend" id="revenueTrend">
+                        <span class="percentage"></span>
+                        <i class="fas"></i>
+                    </span>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Rentals</h3>
+                    <p class="amount" id="totalRentals">0</p>
+                    <span class="trend positive">+8.3% <i class="fas fa-arrow-up"></i></span>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Rentals</h3>
+                    <p class="amount" id="activeRentals">0</p>
+                    <span class="trend neutral">0% <i class="fas fa-minus"></i></span>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-section">
+                    <div class="chart-card">
+                        <h3>Popular Car Types</h3>
+                        <div class="chart-container">
+                            <canvas id="carTypeChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card revenue-trend">
+                        <h3>Revenue Trend</h3>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script src="../admin-js/admin-panel.js"></script>
+    <script src="../admin-js/sales-report.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to format currency
+        const formatCurrency = (amount) => {
+            return '₱' + parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        };
+
+        const updateRevenueTrend = (data) => {
+            // Update total revenue amount
+            const totalRevenueElement = document.getElementById('totalRevenue');
+            if (totalRevenueElement && data.amount !== undefined) {
+                totalRevenueElement.textContent = formatCurrency(data.amount);
+            }
+
+            // Update trend
+            const trendSpan = document.getElementById('revenueTrend');
+            const percentageSpan = trendSpan.querySelector('.percentage');
+            const icon = trendSpan.querySelector('i');
+            
+            if (data.salesRate > 0) {
+                trendSpan.className = 'trend positive';
+                icon.className = 'fas fa-arrow-up';
+            } else if (data.salesRate < 0) {
+                trendSpan.className = 'trend negative';
+                icon.className = 'fas fa-arrow-down';
+            } else {
+                trendSpan.className = 'trend neutral';
+                icon.className = 'fas fa-minus';
+            }
+            
+            percentageSpan.textContent = `${data.salesRate}%`;
+        };
+        
+        // Add this to your existing event listeners or AJAX callbacks
+        window.addEventListener('updateStats', function(e) {
+            if (e.detail && e.detail.totalRevenue) {
+                updateRevenueTrend(e.detail.totalRevenue);
+            }
+        });
+    });
+    </script>
+</body>
+</html>

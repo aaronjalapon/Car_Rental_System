@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../admin-css/admin-panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Admin Panel - Car Rental</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="sidebar">
+        <h2><i class="fas fa-car"></i> Car Rental</h2>
+        <nav>
+            <a href="../admin-html/admin-panel.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="../admin-html/car-management.html"><i class="fas fa-car"></i> Cars</a>
+            <a href="../admin-html/customer-management.html"><i class="fas fa-users"></i> Customers</a>
+            <a href="../admin-html/employee-management.html"><i class="fas fa-user-tie"></i> Employees</a>
+            <a href="../admin-html/reservation-management.html"><i class="fas fa-calendar-check"></i> Reservations</a>
+            <a href="../admin-html/settings.html" class="active"><i class="fas fa-cog"></i> Settings</a>
+            
+            <div class="nav-section">
+                <p><i class="fas fa-chart-bar"></i> Reports</p>
+                <a href="../html/transaction-management.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="../admin-html/sales-report.html" class="active"><i class="fas fa-chart-line"></i> Sales Report</a>
+            </div>
+            
+            <a href="../html/login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </div>
+
+    <div class="main">
+        <div class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="dashboard-card">
+            <div class="dashboard-header">
+                <h1>Today's Statistics</h1>
+                <p id="current-datetime"></p>
+            </div>
+
+            <div class="dashboard-statistics">
+                <div class="stat">
+                    <h2 id="total-cars">--</h2>
+                    <p>Total Cars</p>
+                </div>
+                <div class="stat">
+                    <h2 id="total-customers">--</h2>
+                    <p>Total Customers</p>
+                </div>
+                <div class="stat">
+                    <h2 id="revenue-rate">--.--%</h2>
+                    <p>Revenue Rate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../admin-js/admin-panel.js"></script>
+</body>
+</html>

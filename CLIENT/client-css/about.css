@@ -1,0 +1,117 @@
+:root {
+    --primary-color: #db0000;
+    --secondary-color: #1a1a1a;
+    --text-color: #ffffff;
+    --border-color: #3d3d3d;
+    --hover-color: #ff0000;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0px auto 40px;
+    padding: 120px 20px 0px 20px;
+}
+
+section {
+    background: #2d2d2d;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    color: #e0e0e0;
+}
+
+ul li::before {
+    display: none; /* Remove arrows */
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--hover-color);
+}
+
+/* Ensure links in about page don't inherit red color */
+section a {
+    color: #db0000;
+}
+
+section a:hover {
+    color: #ff0000;
+}
+
+/* Animation for sections */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+section:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        margin-top: 80px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}

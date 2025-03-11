@@ -1,0 +1,592 @@
+.main {
+    margin-left: 330px;
+    padding: 20px 30px;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    transition: margin-left 0.3s ease;
+}
+
+section {
+    margin-left: 280px;
+    padding: 2rem;
+}
+
+/* Card Styles */
+.card {
+    background: #2d2d2d;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-actions h2 {
+    color: #ffffff;
+    margin: 0;
+}
+
+.actions-wrapper {
+    display: flex;
+    gap: 15px;
+}
+
+/* Search Box */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 300px;
+}
+
+.search-box input {
+    padding: 12px 40px 12px 15px;
+    border-radius: 5px;
+    border: 1px solid #3d3d3d;
+    background: #2d2d2d;
+    color: white;
+    width: 100%;
+}
+
+.search-box i {
+    position: absolute;
+    right: 12px;
+    color: #666;
+}
+.add-btn {
+    padding: 12px 20px;
+    background: #db0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background: #ff0000
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #2196F3;
+    color: white;
+}
+
+.delete-btn {
+    background: #f44336;
+    color: white;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+/* Table Styles */
+.table-container {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 8px;
+    background: #2d2d2d; /* Change container background to gray */
+    overflow: hidden;
+    padding-bottom: 1px; /* Prevent bottom cutoff */
+}
+
+/* Updated Table and Row Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    min-width: auto;
+    table-layout: fixed;
+}
+
+tbody tr {
+    height: 48px; /* Set fixed height for rows */
+    border-bottom: 1px solid #3d3d3d; /* Move border to tr instead of td */
+    overflow: visible; /* Allow buttons to overflow if needed */
+    background: #2d2d2d;
+    position: relative;
+}
+
+tbody tr::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #3d3d3d;
+    z-index: 0;
+}
+
+th, td {
+    padding: 0 8px;
+    text-align: left;
+    border: none; /* Remove all td borders */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: inherit;
+}
+
+/* Header Styles */
+thead tr {
+    background: #1a1a1a;
+}
+
+th {
+    padding: 12px 8px;
+    text-align: left;
+    border: none;
+    border-bottom: 2px solid #3d3d3d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 48px;
+    line-height: 48px;
+    color: #ffffff;
+    font-weight: 600;
+    background: #1a1a1a;
+}
+
+/* Body Styles */
+tbody tr {
+    background: #2d2d2d; /* Light gray for odd rows */
+}
+
+tbody tr:nth-child(even) {
+    background: #333333; /* Slightly darker gray for even rows */
+}
+
+tbody tr:hover {
+    background: #3d3d3d; /* Darker gray on hover */
+}
+
+th, td {
+    padding: 12px 8px;
+    text-align: left;
+    border: none; /* Remove default borders */
+    border-bottom: 1px solid #3d3d3d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 48px;
+    line-height: 48px; /* Match height for vertical centering */
+    background: inherit; /* Inherit background from tr */
+    color: #e0e0e0; /* Light gray text for better readability */
+}
+
+/* Adjusted column widths */
+table th:nth-child(1), /* Status */
+table td:nth-child(1) {
+    width: 40px;
+    text-align: center;
+    padding: 0;
+}
+
+table th:nth-child(2), /* ID */
+table td:nth-child(2) {
+    width: 8%;
+}
+
+table th:nth-child(3), /* Customer */
+table td:nth-child(3) {
+    width: 15%;
+}
+
+table th:nth-child(4), /* Car */
+table td:nth-child(4) {
+    width: 20%;
+}
+
+table th:nth-child(5), /* Employee */
+table td:nth-child(5) {
+    width: 15%;
+}
+
+table th:nth-child(6), /* Start Date */
+table td:nth-child(6),
+table th:nth-child(7), /* End Date */
+table td:nth-child(7) {
+    width: 12%;
+}
+
+/* Reset last column styles */
+table th:last-child,
+table td:last-child {
+    width: 90px;
+    padding: 0;
+    border: none;
+    background: inherit;
+    border-bottom: 1px solid #3d3d3d;
+}
+
+/* Compact Action Buttons */
+td.actions {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    height: 48px;
+    padding: 0 4px;
+    background: inherit;
+    position: relative;
+    border: none !important;
+}
+
+/* Action Buttons Alignment */
+.edit-btn, 
+.delete-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    border-radius: 4px;
+    position: relative; /* Keep buttons above the border */
+    z-index: 1;
+    transform: translateY(-1px); /* Slight adjustment for visual alignment */
+}
+
+.edit-btn i,
+.delete-btn i {
+    margin-top: 4px; /* Increased margin-top for icons */
+    font-size: 14px; /* Adjust icon size if needed */
+}
+
+/* Add tooltips for truncated text */
+td {
+    position: relative;
+}
+
+td:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    white-space: nowrap;
+}
+
+/* Zebra striping for rows */
+tbody tr {
+    background: #2d2d2d;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #333333;
+}
+
+tbody tr:hover {
+    background-color: #3d3d3d;
+}
+
+/* Status Styles */
+.status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.status.active {
+    background: #4CAF50;
+    color: white;
+}
+
+/* Status Column Styles */
+.status-col {
+    width: 40px !important;
+    text-align: center;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.status-indicator.ongoing {
+    background-color: #ffa500;
+    box-shadow: 0 0 4px #ffa500;
+}
+
+.status-indicator.done {
+    background-color: #4CAF50;
+    box-shadow: 0 0 4px #4CAF50;
+}
+
+/* Form Styles */
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #3d3d3d;
+    background: #1a1a1a;
+    color: white;
+    margin-top: 5px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background: #2d2d2d;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+    transform: translateY(-50%);
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+/* Form Styles Update */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.form-group input[type="date"],
+.form-group select {
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #3d3d3d;
+    background: #1a1a1a;
+    color: white;
+    margin-top: 5px;
+}
+
+.form-group input[type="date"]{
+    width: 95%;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.save-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn {
+    background: #4CAF50;
+    color: white;
+}
+
+.cancel-btn {
+    background: #666;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #db0000;
+}
+
+.cancel-btn:hover {
+    background: #444;
+}
+
+/* Updated Modal Form Styles */
+.modal .form-group {
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal .form-group input[type="text"],
+.modal .form-group input[readonly] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #3d3d3d;
+    border-radius: 4px;
+    background-color: #222;
+    color: #999;
+    cursor: not-allowed;
+    font-size: 14px;
+}
+
+.modal .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #3d3d3d;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.modal .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Specific styling for readonly inputs */
+.modal .form-group input[readonly]:focus {
+    outline: none;
+    border-color: #3d3d3d;
+}
+
+/* Style for the payment status select */
+.modal .form-group select[name="paymentStatus"] {
+    background-color: #1a1a1a;
+    cursor: pointer;
+    color: white;
+}
+
+/* Add these new styles at the end of the file */
+
+/* Add Reservation Modal Specific Styles */
+.add-reservation-modal .modal-content {
+    max-width: 500px;
+}
+
+.add-reservation-modal .form-group select,
+.add-reservation-modal .form-group input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #3d3d3d;
+    background: #1a1a1a;
+    color: white;
+    margin-top: 5px;
+}
+
+.add-reservation-modal .form-group input[type="date"] {
+    color: #fff;
+    font-family: inherit;
+}
+
+.add-reservation-modal .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.add-reservation-modal .save-btn {
+    background: #db0000;
+}
+
+.add-reservation-modal .save-btn:hover {
+    background: #ff0000;
+}
+
+/* Inherit other styles from employee-management.css */
+
+/* Add these styles at the end of the file */
+
+/* Cost Summary Styles */
+.cost-summary {
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #3d3d3d;
+}
+
+.cost-summary h3 {
+    color: #fff;
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #e0e0e0;
+    font-size: 14px;
+}
+
+.summary-item.total {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #3d3d3d;
+    font-weight: bold;
+    color: #fff;
+}
+
+#dailyRate, #totalAmount {
+    font-family: monospace;
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Reservations - Car Rental Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../client-css/navbar.css">
+    <link rel="stylesheet" href="../client-css/my-reservations.css">
+    <style>
+        .reservations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .reservation-card {
+            background: #343a40;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            padding: 20px;
+            border: 1px solid #212529;
+            color: #fff;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #495057;
+            padding-bottom: 10px;
+        }
+        .card-header h3 {
+            color: #fff;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .card-content {
+            color: #e9ecef;
+        }
+        .card-content p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        .card-content strong {
+            color: #fff;
+        }
+        .status {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 600;
+            background: #495057;
+            color: #fff;
+        }
+        .status.ongoing {
+            background: #0056b3;
+            color: #fff;
+        }
+        .status.done {
+            background: #28a745;
+            color: #fff;
+        }
+        .error-message {
+            color: #fff;
+            background-color: #dc3545;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            margin: 20px;
+        }
+        .no-reservations {
+            text-align: center;
+            padding: 30px;
+            color: #fff;
+            background: #343a40;
+            border-radius: 8px;
+            margin: 20px;
+        }
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #fff;
+            background: #343a40;
+            border-radius: 8px;
+            margin: 20px;
+        }
+        .reservation-filters {
+            padding: 20px;
+            background: #343a40;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 1160px;
+            display: flex;
+            gap: 15px;
+        }
+        #statusFilter, #searchReservation {
+            padding: 8px 12px;
+            border: 1px solid #495057;
+            border-radius: 4px;
+            font-size: 1rem;
+            background: #495057;
+            color: #fff;
+        }
+        #searchReservation::placeholder {
+            color: #adb5bd;
+        }
+        .container h1 {
+            color: #fff;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">DriveNow</div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/MAIN/main-html/index.html" class="home-link">Home</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/about.html">About</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/customer-rental.html">Services</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/my-reservations.html">My Reservations</a></li>
+                <li><a href="/CSE7-PROJECT/Car_Rental_System(revised3)/CLIENT/client-html/profile.html" class="profile-btn">My Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>My Reservations</h1>
+        
+        <div class="reservation-filters">
+            <select id="statusFilter">
+                <option value="all">All Reservations</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="done">Done</option>
+            </select>
+            <input type="text" id="searchReservation" placeholder="Search car or reservation ID">
+        </div>
+
+        <div class="reservations-grid" id="reservationsList">
+            <p class="loading">Loading reservations...</p>
+        </div>
+    </main>
+    
+    <script defer src="../client-js/navbar.js"></script>
+    <script defer src="../client-js/my-reservations.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../admin-css/admin-panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin-css/reservation-management.css">
+    <title>Reservations - Car Rental</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="sidebar">
+        <h2><i class="fas fa-car"></i> Car Rental</h2>
+        <nav>
+            <a href="../admin-html/admin-panel.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="../admin-html/car-management.html"><i class="fas fa-car"></i> Cars</a>
+            <a href="../admin-html/customer-management.html"><i class="fas fa-users"></i> Customers</a>
+            <a href="../admin-html/employee-management.html"><i class="fas fa-user-tie"></i> Employees</a>
+            <a href="../admin-html/reservation-management.html"><i class="fas fa-calendar-check"></i> Reservations</a>
+            <a href="../admin-html/settings.html" class="active"><i class="fas fa-cog"></i> Settings</a>
+            
+            <div class="nav-section">
+                <p><i class="fas fa-chart-bar"></i> Reports</p>
+                <a href="../admin-html/transaction-management.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="../admin-html/sales-report.html" class="active"><i class="fas fa-chart-line"></i> Sales Report</a>
+            </div>
+            
+            <a href="../html/login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </div>
+
+    <div class="main">
+        <div class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <section id="reservations" class="card">
+            <div class="header-actions">
+                <h2>Reservation Management</h2>
+                <div class="actions-wrapper">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search reservations...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <button class="add-btn" onclick="openAddModal()"><i class="fas fa-plus"></i> Add New Reservation</button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="status-col"></th>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Car</th>
+                            <th>Employee</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr>
+                            <td>301</td>
+                            <td>John Doe</td>
+                            <td>Toyota Camry</td>
+                            <td>Jane Smith</td>
+                            <td>2023-11-01</td>
+                            <td>2023-11-04</td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal for Edit Reservation -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Reservation</h2>
+            <form id="reservationForm">
+                <div class="form-group">
+                    <label>Customer:</label>
+                    <input type="text" name="customer" readonly disabled>
+                </div>
+                <div class="form-group">
+                    <label>Car:</label>
+                    <input type="text" name="car" readonly disabled>
+                </div>
+                <div class="form-group">
+                    <label>Start Date:</label>
+                    <input type="text" name="startDate" readonly disabled>
+                </div>
+                <div class="form-group">
+                    <label>End Date:</label>
+                    <input type="text" name="endDate" readonly disabled>
+                </div>
+                <div class="form-group">
+                    <label>Total Amount:</label>
+                    <input type="text" name="totalAmount" readonly disabled>
+                </div>
+                <div class="form-group">
+                    <label>Payment Status:</label>
+                    <select name="paymentStatus" required>
+                        <option value="Not paid">Not paid</option>
+                        <option value="Paid">Paid</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Reservation Status:</label>
+                    <select name="reservationStatus" required>
+                        <option value="ongoing">Ongoing</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Update Status</button>
+                    <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Add Reservation -->
+    <div id="addReservationModal" class="modal add-reservation-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Reservation</h2>
+            <form id="addReservationForm">
+                <div class="form-group">
+                    <label>Customer:</label>
+                    <select name="customer" required>
+                        <option value="">Select Customer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Car:</label>
+                    <select name="car" required>
+                        <option value="">Select Car</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Employee:</label>
+                    <input type="text" name="employee" readonly disabled>
+                    <input type="hidden" name="employeeId">
+                </div>
+                <div class="form-group">
+                    <label>Start Date:</label>
+                    <input type="date" name="startDate" required>
+                </div>
+                <div class="form-group">
+                    <label>End Date:</label>
+                    <input type="date" name="endDate" required>
+                </div>
+                
+                <!-- Add this new cost summary section -->
+                <div class="cost-summary">
+                    <h3>Rental Summary</h3>
+                    <div class="summary-item">
+                        <span>Daily Rate:</span>
+                        <span id="dailyRate">₱0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Number of Days:</span>
+                        <span id="numDays">0</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total Amount:</span>
+                        <span id="totalAmount">₱0.00</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Add Reservation</button>
+                    <button type="button" class="cancel-btn" onclick="closeAddModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../admin-js/admin-panel.js"></script>
+    <script src="../admin-js/reservation-management.js"></script>
+</body>
+</html>

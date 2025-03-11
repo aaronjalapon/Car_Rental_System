@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../admin-css/admin-panel.css">
+    <link rel="stylesheet" href="../admin-css/transaction-management.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Transactions - Car Rental</title>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="sidebar">
+        <h2><i class="fas fa-car"></i> Car Rental</h2>
+        <nav>
+            <a href="../admin-html/admin-panel.html"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="../admin-html/car-management.html"><i class="fas fa-car"></i> Cars</a>
+            <a href="../admin-html/customer-management.html"><i class="fas fa-users"></i> Customers</a>
+            <a href="../admin-html/employee-management.html"><i class="fas fa-user-tie"></i> Employees</a>
+            <a href="../admin-html/reservation-management.html"><i class="fas fa-calendar-check"></i> Reservations</a>
+            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+            
+            <div class="nav-section">
+                <p><i class="fas fa-chart-bar"></i> Reports</p>
+                <a href="../admin-html/transaction-management.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="../admin-html/sales-report.html" class="active"><i class="fas fa-chart-line"></i> Sales Report</a>
+            </div>
+            
+            <a href="../html/login.html" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </div>
+
+    <div class="main">
+        <div class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <section id="transactions" class="card">
+            <div class="header-actions">
+                <h2>Transaction Management</h2>
+                <div class="actions-wrapper">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search transactions...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Reservation ID</th>
+                            <th>Customer</th>
+                            <th>Transaction Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr>
+                            <td>401</td>
+                            <td>301</td>
+                            <td>John Doe</td>
+                            <td>2025-01-28</td>
+                            <td>$150.00</td>
+                            <td><span class="status completed">Completed</span></td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal for Add/Edit Transaction -->
+    <div id="transactionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add New Transaction</h2>
+            <form id="transactionForm">
+                <div class="form-group">
+                    <label>Reservation ID:</label>
+                    <input type="text" name="reservationId" required>
+                </div>
+                <div class="form-group">
+                    <label>Amount:</label>
+                    <input type="number" name="amount" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Transaction Date:</label>
+                    <input type="date" name="transactionDate" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">Save</button>
+                    <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../admin-js/burger-menu.js"></script>
+    <script src="../admin-js/transaction-management.js"></script>
+</body>
+</html>

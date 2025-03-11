@@ -1,0 +1,14 @@
+Options +FollowSymLinks
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^.*$ - [L]
+</IfModule>
+
+# Add SVG to allowed file types
+<FilesMatch "\.(jpg|jpeg|png|gif|svg)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Proper MIME type for SVG
+AddType image/svg+xml .svg
