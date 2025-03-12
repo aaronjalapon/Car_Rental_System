@@ -71,4 +71,17 @@ document.addEventListener('DOMContentLoaded', function() {
             alert(error.message || 'Registration failed. Please try again.');
         }
     });
+
+    // Add password toggle functionality
+    const toggleButtons = document.querySelectorAll('.toggle-password');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const passwordInput = this.previousElementSibling;
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            const icon = this.querySelector('i');
+            icon.className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+        });
+    });
 });

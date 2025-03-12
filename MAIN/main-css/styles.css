@@ -214,3 +214,32 @@ input[type="file"] {
     border-radius: 4px;
     width: 100%;
 }
+
+/* Password Toggle Button Styles */
+.password-field {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.toggle-password i {
+    color: #666;
+    font-size: 16px;
+}
+
+.toggle-password:hover i {
+    color: #333;
+}
+
+.toggle-password:focus {
+    outline: none;
+}

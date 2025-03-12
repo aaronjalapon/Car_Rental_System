@@ -9,7 +9,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    padding: 10px 5% 0 5px;
     background: linear-gradient(to right, #000000, #960000);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
@@ -124,13 +124,15 @@ header nav a:hover {
     background: #2a2a2a;
 }
 
-.feature img {
+.feature i {
+    font-size: 3em;
+    color: #cc0000;
     max-width: 100px;
     margin-bottom: 25px;
     transition: transform 0.3s ease;
 }
 
-.feature:hover img {
+.feature:hover i {
     transform: scale(1.1);
 }
 

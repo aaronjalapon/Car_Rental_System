@@ -5,16 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Rental Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../main-css/landing-page.css">
+    <link rel="stylesheet" href="../client-css/navbar.css">
+    <link rel="stylesheet" href="/MAIN/main-css/landing-page.css">
 </head>
 <body>
     <header>
         <div class="logo">DriveNow</div>
-        <nav>
-            <a href="../main-html/index.html" class="active">Home</a>
-            <a href="../main-html/about.html">About</a>
-            <a href="../main-html/login.html">Services</a>
-            <a href="../main-html/login.html" class="login-btn">Login</a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/CLIENT/client-html/index.html" class="home-link">Home</a></li>
+                <li><a href="/CLIENT/client-html/about.html">About</a></li>
+                <li><a href="/CLIENT/client-html/customer-rental.html">Services</a></li>
+                <li><a href="/CLIENT/client-html/my-reservations.html">My Reservations</a></li>
+                <li><a href="/CLIENT/client-html/profile.html" class="profile-btn">My Profile</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -52,5 +61,6 @@
     <footer>
         <p>&copy; 2025 DriveNow Car Rental Services. All rights reserved.</p>
     </footer>
+    <script defer src="../client-js/navbar.js"></script>
 </body>
 </html>
